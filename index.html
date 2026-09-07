@@ -13,7 +13,7 @@
 
     body {
         margin: 0;
-        background-color: rgb(170, 237, 171);
+        background: #f7f7f7;
         font-family: Arial, sans-serif;
         overflow: hidden;
     }
@@ -43,22 +43,8 @@
     /* FRASE SOPRA / ACCANTO AL COUNTDOWN */
 
     #countdown-text {
-        position: fixed;
-
-        top: 10px;
-        left: 5%;
-        width: 90%;
-
-        height: 60px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        z-index: 10;
-        font-size: 36px;
+        font-size: 24px;
         font-weight: bold;
-	top: 10px;
 
         margin-right: 15px;
 
@@ -69,24 +55,12 @@
     /* COUNTDOWN */
 
     #countdown {
-        position: fixed;
-
-        top: 80px;
-        left: 5%;
-        width: 90%;
-
-        height: 60px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        z-index: 10;
         font-size: 38px;
         font-weight: bold;
 
         white-space: nowrap;
     }
+
 
 
     /* ================================
@@ -96,7 +70,7 @@
     #game-container {
         position: fixed;
 
-        top: 180px;
+        top: 80px;
         left: 5%;
 
         width: 90%;
@@ -171,7 +145,6 @@
         00:00:00
     </div>
 
-
 </div>
 
 
@@ -211,7 +184,7 @@
    DATA E ORA DELLA SORPRESA
    ================================= */
 
-const dataFinale = "2026-09-08T21:00:00+02:00";
+const dataFinale = "2026-09-08T22:00:00+02:00";
 
 
 /* =================================
@@ -280,7 +253,7 @@ function aggiornaCountdown() {
 
 
         /* ================================
-           DOPO 10 SECONDI
+           DOPO 4 SECONDI
            MOSTRA LA VERA IMMAGINE
            ================================ */
 
