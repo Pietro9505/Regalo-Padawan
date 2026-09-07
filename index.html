@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -8,93 +7,113 @@
 <title>Countdown</title>
 
 <style>
+
     * {
         box-sizing: border-box;
     }
 
+    html,
     body {
         margin: 0;
+        padding: 0;
+
+        width: 100%;
+        height: 100%;
+
         background-color: rgb(170, 237, 171);
+
         font-family: Arial, sans-serif;
+
         overflow: hidden;
     }
 
-    /* ================================
-       AREA COUNTDOWN
-       ================================ */
+
+    /* =========================================
+       AREA SUPERIORE
+       ========================================= */
 
     #countdown-area {
+
         position: fixed;
-        top: 10px;
-        left: 5%;
-        width: 90%;
-        height: 60px;
+
+        top: 0;
+        left: 0;
+
+        width: 100%;
+
+        height: 160px;
 
         display: flex;
-        align-items: center;
+
+        flex-direction: column;
+
         justify-content: center;
 
+        align-items: center;
+
+        text-align: center;
+
         z-index: 10;
+
+        padding: 10px 20px;
     }
 
-    /* FRASE */
+
+    /* =========================================
+       FRASE
+       ========================================= */
 
     #countdown-text {
-        position: fixed;
 
-        top: 10px;
-        left: 5%;
-        width: 90%;
-        height: 60px;
+        width: 100%;
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        z-index: 10;
+        text-align: center;
 
         font-size: 36px;
+
         font-weight: bold;
 
-        margin-right: 15px;
+        line-height: 1.2;
 
-        text-align: right;
+        margin: 0 0 8px 0;
     }
 
-    /* COUNTDOWN */
+
+    /* =========================================
+       COUNTDOWN
+       ========================================= */
 
     #countdown {
-        position: fixed;
 
-        top: 80px;
-        left: 5%;
-        width: 90%;
-        height: 60px;
+        width: 100%;
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        text-align: center;
 
-        z-index: 10;
+        font-size: 42px;
 
-        font-size: 38px;
         font-weight: bold;
+
+        line-height: 1;
 
         white-space: nowrap;
     }
 
-    /* ================================
+
+    /* =========================================
        FINESTRA DEL GIOCO
-       ================================ */
+       ========================================= */
 
     #game-container {
+
         position: fixed;
 
         top: 180px;
+
         left: 5%;
 
         width: 90%;
-        height: calc(100vh - 100px);
+
+        height: calc(100vh - 200px);
 
         background: white;
 
@@ -102,21 +121,29 @@
 
         overflow: hidden;
 
-        box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+        box-shadow:
+            0 5px 25px rgba(0,0,0,0.15);
     }
 
+
     #game {
+
         width: 100%;
+
         height: 100%;
 
         border: none;
+
+        display: block;
     }
 
-    /* ================================
+
+    /* =========================================
        IMMAGINE FINALE
-       ================================ */
+       ========================================= */
 
     #final-image {
+
         display: none;
 
         position: fixed;
@@ -124,29 +151,146 @@
         inset: 0;
 
         width: 100vw;
+
         height: 100vh;
 
         background: black;
 
         justify-content: center;
+
         align-items: center;
 
         z-index: 100;
     }
 
+
     #final-image img {
-        max-width: 100%;
-        max-height: 100%;
+
+        width: 100%;
+
+        height: 100%;
 
         object-fit: contain;
     }
 
+
+    /* =========================================
+       SMARTPHONE VERTICALE
+       ========================================= */
+
+    @media (max-width: 600px) and (orientation: portrait) {
+
+        #countdown-area {
+
+            height: 125px;
+
+            padding: 8px 10px;
+        }
+
+
+        #countdown-text {
+
+            font-size: 22px;
+
+            line-height: 1.2;
+
+            margin-bottom: 8px;
+        }
+
+
+        #countdown {
+
+            font-size: 34px;
+        }
+
+
+        #game-container {
+
+            top: 140px;
+
+            left: 2%;
+
+            width: 96%;
+
+            height: calc(100vh - 150px);
+
+            border-radius: 10px;
+        }
+    }
+
+
+    /* =========================================
+       SMARTPHONE ORIZZONTALE
+       ========================================= */
+
+    @media (max-width: 900px) and (orientation: landscape) {
+
+        #countdown-area {
+
+            height: 95px;
+
+            padding: 5px 15px;
+        }
+
+
+        #countdown-text {
+
+            font-size: 22px;
+
+            margin-bottom: 4px;
+        }
+
+
+        #countdown {
+
+            font-size: 30px;
+        }
+
+
+        #game-container {
+
+            top: 105px;
+
+            left: 2%;
+
+            width: 96%;
+
+            height: calc(100vh - 115px);
+
+            border-radius: 10px;
+        }
+    }
+
+
+    /* =========================================
+       SCHERMI MOLTO PICCOLI
+       ========================================= */
+
+    @media (max-width: 380px) {
+
+        #countdown-text {
+
+            font-size: 19px;
+        }
+
+
+        #countdown {
+
+            font-size: 30px;
+        }
+    }
+
 </style>
+
 </head>
+
 
 <body>
 
-<!-- COUNTDOWN -->
+
+<!-- =========================================
+     COUNTDOWN
+     ========================================= -->
 
 <div id="countdown-area">
 
@@ -161,7 +305,9 @@
 </div>
 
 
-<!-- GIOCO -->
+<!-- =========================================
+     GIOCO
+     ========================================= -->
 
 <div id="game-container">
 
@@ -174,7 +320,9 @@
 </div>
 
 
-<!-- IMMAGINE FINALE -->
+<!-- =========================================
+     IMMAGINE FINALE
+     ========================================= -->
 
 <div id="final-image">
 
@@ -188,24 +336,18 @@
 
 <script>
 
-/* =================================
+
+/* =========================================
    DATA E ORA DELLA SORPRESA
-   ================================= */
+   ========================================= */
 
-/*
-   IMPORTANTE:
-   Inserisci qui una data FUTURA.
-
-   Esempio:
-   8 settembre 2026 alle 19:00
-*/
-
-const dataFinale = "2026-09-08T19:00:00+02:00";
+const dataFinale =
+    "2026-09-08T18:22:40+02:00";
 
 
-/* =================================
+/* =========================================
    ELEMENTI
-   ================================= */
+   ========================================= */
 
 const countdown =
     document.getElementById("countdown");
@@ -223,24 +365,24 @@ const finalImg =
     document.getElementById("final-img");
 
 
-/* =================================
+/* =========================================
    DATA FINALE
-   ================================= */
+   ========================================= */
 
 const target =
     new Date(dataFinale).getTime();
 
 
-/* =================================
+/* =========================================
    TIMER
-   ================================= */
+   ========================================= */
 
 let timer;
 
 
-/* =================================
+/* =========================================
    FUNZIONE COUNTDOWN
-   ================================= */
+   ========================================= */
 
 function aggiornaCountdown() {
 
@@ -250,23 +392,23 @@ function aggiornaCountdown() {
         target - adesso;
 
 
-    /* ================================
+    /* =====================================
        COUNTDOWN TERMINATO
-       ================================ */
+       ===================================== */
 
     if (differenza <= 0) {
 
-        /* Nascondi countdown */
+        /* Nasconde countdown */
 
         countdownArea.style.display = "none";
 
 
-        /* Nascondi gioco */
+        /* Nasconde gioco */
 
         gameContainer.style.display = "none";
 
 
-        /* Mostra FALSA immagine */
+        /* Mostra immagine falsa */
 
         finalImg.src =
             "immagine_falsa.jpg";
@@ -276,11 +418,8 @@ function aggiornaCountdown() {
 
 
         /*
-           Aspetta 4 secondi
-           e mostra la vera immagine.
-           
-           Se vuoi 10 secondi:
-           cambia 4000 in 10000.
+           Dopo 10 secondi mostra
+           l'immagine vera.
         */
 
         setTimeout(function() {
@@ -288,22 +427,24 @@ function aggiornaCountdown() {
             finalImg.src =
                 "immagine.jpg";
 
-        }, 4000);
+        }, 10000);
 
 
-        /* Ferma il timer */
+        /* Ferma il countdown */
 
         if (timer) {
+
             clearInterval(timer);
+
         }
 
         return;
     }
 
 
-    /* =================================
-       CALCOLO TEMPO
-       ================================= */
+    /* =====================================
+       CALCOLO DEL TEMPO
+       ===================================== */
 
     const ore =
         Math.floor(
@@ -323,21 +464,24 @@ function aggiornaCountdown() {
         );
 
 
-    /* =================================
+    /* =====================================
        VISUALIZZAZIONE
-       ================================= */
+       ===================================== */
 
     countdown.textContent =
+
         String(ore).padStart(2, "0") + ":" +
+
         String(minuti).padStart(2, "0") + ":" +
+
         String(secondi).padStart(2, "0");
 
 }
 
 
-/* =================================
+/* =========================================
    AVVIO
-   ================================= */
+   ========================================= */
 
 aggiornaCountdown();
 
@@ -350,6 +494,7 @@ timer =
 
 
 </script>
+
 
 </body>
 </html>
