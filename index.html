@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -18,48 +19,34 @@
         overflow: hidden;
     }
 
-    /* COUNTDOWN */
-
     #countdown {
         position: fixed;
         top: 15px;
         left: 0;
         width: 100%;
         text-align: center;
-
         font-size: 38px;
         font-weight: bold;
-
         z-index: 10;
     }
 
-    /* FINESTRA DEL GIOCO */
-
     #game-container {
         position: fixed;
-
         top: 80px;
         left: 5%;
         width: 90%;
         height: calc(100vh - 100px);
-
         background: white;
-
         border-radius: 15px;
-
         overflow: hidden;
-
         box-shadow: 0 5px 25px rgba(0,0,0,0.15);
     }
 
     #game {
         width: 100%;
         height: 100%;
-
         border: none;
     }
-
-    /* IMMAGINE FINALE */
 
     #final-image {
         display: none;
@@ -89,28 +76,19 @@
 
 <body>
 
-
-<!-- COUNTDOWN -->
-
 <div id="countdown">
     00:00:00
 </div>
-
-
-<!-- GIOCO -->
 
 <div id="game-container">
 
     <iframe
         id="game"
-        src="https://typeling1578.github.io/dino-game"
+        src="https://typeling1578.github.io/dino-game/"
         allow="fullscreen">
     </iframe>
 
 </div>
-
-
-<!-- IMMAGINE FINALE -->
 
 <div id="final-image">
 
@@ -120,47 +98,42 @@
 
 </div>
 
-
 <script>
 
 /* =================================
    DATA E ORA DELLA SORPRESA
    ================================= */
 
-const dataFinale =
-    "2026-09-08T22:00:00+02:00";
+const dataFinale = "2026-09-08T22:00:00+02:00";
 
 
 /* =================================
    ELEMENTI
    ================================= */
 
-const countdown =
-    document.getElementById("countdown");
-
-const gameContainer =
-    document.getElementById("game-container");
-
-const finalImage =
-    document.getElementById("final-image");
+const countdown = document.getElementById("countdown");
+const gameContainer = document.getElementById("game-container");
+const finalImage = document.getElementById("final-image");
 
 
 /* =================================
-   COUNTDOWN
+   DATA FINALE
    ================================= */
 
-const target =
-    new Date(dataFinale).getTime();
+const target = new Date(dataFinale).getTime();
 
+
+/* =================================
+   FUNZIONE COUNTDOWN
+   ================================= */
 
 function aggiornaCountdown() {
 
-    const adesso =
-        new Date().getTime();
+    const adesso = Date.now();
+    const differenza = target - adesso;
 
-    const differenza =
-        target - adesso;
 
+    /* Quando arriva l'ora */
 
     if (differenza <= 0) {
 
@@ -170,48 +143,47 @@ function aggiornaCountdown() {
 
         finalImage.style.display = "flex";
 
-        clearInterval(timer);
-
         return;
     }
 
 
-    const ore =
-        Math.floor(
-            differenza / 3600000
-        );
+    /* Calcolo tempo */
+
+    const ore = Math.floor(
+        differenza / 3600000
+    );
+
+    const minuti = Math.floor(
+        (differenza % 3600000) / 60000
+    );
+
+    const secondi = Math.floor(
+        (differenza % 60000) / 1000
+    );
 
 
-    const minuti =
-        Math.floor(
-            (differenza % 3600000) / 60000
-        );
-
-
-    const secondi =
-        Math.floor(
-            (differenza % 60000) / 1000
-        );
-
+    /* Visualizzazione */
 
     countdown.textContent =
         String(ore).padStart(2, "0") + ":" +
         String(minuti).padStart(2, "0") + ":" +
         String(secondi).padStart(2, "0");
-
 }
 
 
+/* =================================
+   AVVIO
+   ================================= */
+
 aggiornaCountdown();
 
-
-const timer =
-    setInterval(
-        aggiornaCountdown,
-        1000
-    );
+const timer = setInterval(
+    aggiornaCountdown,
+    1000
+);
 
 </script>
 
 </body>
 </html>
+```
